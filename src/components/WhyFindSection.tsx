@@ -1,7 +1,17 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { ZoomParallax } from '@/components/ui/zoom-parallax';
+
+const NOSOTROS_IMAGES = [
+  { src: '/images/prof-1.jpg', alt: 'Cardinale Pastura — equipo' },
+  { src: '/images/prof-2.jpg', alt: 'Cardinale Pastura — equipo' },
+  { src: '/images/institucional-1.jpg', alt: 'Cardinale Pastura' },
+  { src: '/images/sierra-viva-fachada.jpg', alt: 'Sierra Viva — fachada' },
+  { src: '/images/institucional-2.jpg', alt: 'Cardinale Pastura' },
+  { src: '/images/sierra-viva-render-1.jpg', alt: 'Sierra Viva — render' },
+  { src: '/images/sierra-viva-render-2.jpg', alt: 'Sierra Viva — render' },
+];
 
 export function NosotrosSection() {
   const revealRef = useRef<HTMLSpanElement>(null);
@@ -25,14 +35,11 @@ export function NosotrosSection() {
   }, []);
 
   return (
-    <section id="nosotros" className="bg-white px-4 py-16 md:px-[75px] md:py-[120px]">
-      {/* Texto editorial principal */}
-      <div className="flex flex-col gap-4 mb-12 md:grid md:grid-cols-[200px_1fr] md:gap-20 md:mb-20">
-        {/* Etiqueta lateral */}
-        <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest">Nosotros</span>
-
-        {/* Bloque de texto grande */}
-        <div>
+    <section id="nosotros" className="bg-white">
+      {/* Texto editorial */}
+      <div className="px-4 pt-16 pb-0 md:px-[75px] md:pt-[120px]">
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-[200px_1fr] md:gap-20">
+          <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest">Nosotros</span>
           <p className="text-[clamp(28px,4vw,52px)] font-bold leading-[1.15]">
             <span className="text-[#191919]">
               Cuando ponés tu apellido, el compromiso es otro.
@@ -48,14 +55,8 @@ export function NosotrosSection() {
         </div>
       </div>
 
-      {/* Imagen a ancho completo — sin recorte, proporción natural */}
-      <Image
-        src="/images/institucional-1.jpg"
-        alt="Cardinale Pastura — equipo"
-        width={2400}
-        height={1600}
-        className="w-full h-auto"
-      />
+      {/* Efecto zoom parallax con fotos */}
+      <ZoomParallax images={NOSOTROS_IMAGES} />
     </section>
   );
 }

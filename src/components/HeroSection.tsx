@@ -1,114 +1,87 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRightIcon } from '@/components/icons';
 
 export function HeroSection() {
   return (
-    <section className="relative" style={{ height: '500vh' }}>
-      {/* Panel 1: Hero principal con capas de imágenes */}
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Capa 0: Fondo */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-background.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            priority
-            aria-hidden="true"
-          />
-        </div>
+    <section className="relative h-screen overflow-hidden">
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden="true"
+      >
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
 
-        {/* Capa 1: Nube */}
-        <div
-          className="absolute bottom-[10%] left-1/2 z-[5] w-full -translate-x-1/2 opacity-80"
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/hero-cloud.png"
-            alt=""
-            width={1920}
-            height={600}
-            className="w-full object-contain"
-          />
-        </div>
+      {/* Overlay degradado: oscuro abajo, leve arriba */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(28,49,77,0.45) 0%, rgba(28,49,77,0.65) 100%)',
+        }}
+        aria-hidden="true"
+      />
 
-        {/* Capa 2: Humo */}
-        <div
-          className="absolute bottom-0 left-1/2 z-[6] w-full -translate-x-1/2 opacity-60"
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/hero-smoke.png"
-            alt=""
-            width={1920}
-            height={600}
-            className="w-full object-contain"
-          />
-        </div>
+      {/* Contenido centrado */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-5 text-center px-4 md:px-8">
+        <Image
+          src="/images/logo-cp-blanco.png"
+          alt="Cardinale Pastura"
+          width={200}
+          height={60}
+          className="h-[44px] md:h-[56px] w-auto mb-2"
+          priority
+        />
 
-        {/* Capa 3: Casa */}
-        <div
-          className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2"
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/hero-house.png"
-            alt=""
-            width={1400}
-            height={900}
-            className="max-h-[85vh] w-auto object-contain"
-            priority
-          />
-        </div>
-
-        {/* Capa 4: Texto superpuesto */}
-        <div className="absolute left-0 right-0 top-[80px] z-20 flex flex-col items-center gap-4 text-center">
-          <h1
-            className="font-bold leading-none tracking-[-2.1px] text-[#151717]"
-            style={{ fontSize: 'clamp(48px, 7vw, 105px)' }}
-          >
-            Find What Moves You
-          </h1>
-          <p className="text-[17px] font-normal">
-            <strong className="font-semibold text-[#151717]">
-              Expert agents. Real guidance.
-            </strong>
-            <span className="text-gray-400"> A clear path to find what&apos;s next.</span>
-          </p>
-          <Link
-            href="/search"
-            className="mt-4 inline-flex items-center gap-2 rounded-[100px] bg-[#151717] px-[22.5px] py-[11.55px] text-[15px] font-medium text-white transition-opacity hover:opacity-80"
-          >
-            Find Properties <ArrowRightIcon />
-          </Link>
-        </div>
-      </div>
-
-      {/* Panel 2: FIND Real Estate — texto con imagen como clip */}
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center bg-white">
-        <div
+        <h1
+          className="font-bold leading-[1.05] tracking-tight text-white"
           style={{
-            backgroundImage: 'url(/images/hero-house.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            color: 'transparent',
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 700,
-            textAlign: 'center',
-            lineHeight: 0.9,
-            userSelect: 'none',
+            fontSize: 'clamp(36px, 6vw, 88px)',
+            textShadow: '0 2px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3)',
           }}
-          aria-label="FIND Real Estate"
         >
-          <div style={{ fontSize: 'clamp(80px, 28vw, 420px)' }}>FIND</div>
-          <div style={{ fontSize: 'clamp(40px, 14vw, 210px)', lineHeight: 1 }}>
-            Real Estate
-          </div>
+          Dos apellidos,
+          <br />
+          <span className="text-[#7AB0C4]">una visión.</span>
+        </h1>
+
+        <p
+          className="text-[16px] md:text-[18px] font-light text-white/75 max-w-[480px]"
+          style={{ textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}
+        >
+          Diseño, naturaleza y compromiso.
+        </p>
+
+        <a
+          href="#proyectos"
+          className="mt-3 inline-flex items-center rounded-[100px] bg-white px-7 py-3 text-[14px] md:text-[15px] font-semibold text-[#1C314D] transition-opacity hover:opacity-85"
+        >
+          Conocé Sierra Viva
+        </a>
+      </div>
+
+      {/* Indicador de scroll */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60">
+        <span className="text-white text-[11px] uppercase tracking-[0.2em]">Scroll</span>
+        <div className="w-px h-10 bg-white/50 relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 w-full bg-white"
+            style={{
+              height: '40%',
+              animation: 'scrollIndicator 1.5s ease-in-out infinite',
+            }}
+          />
         </div>
       </div>
+
+      <style>{`
+        @keyframes scrollIndicator {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(300%); }
+        }
+      `}</style>
     </section>
   );
 }

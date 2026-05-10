@@ -6,8 +6,7 @@
 
 @theme inline {
   /* Fonts */
-  --font-sans: var(--font-instrument-sans), "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-lora), "Lora", ui-serif, Georgia, serif;
+  --font-sans: var(--font-nunito-sans), "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
   --font-heading: var(--font-sans);
 
@@ -46,28 +45,31 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* FIND brand custom tokens */
-  --color-find-black: #151717;
-  --color-find-gray: #F1F1F1;
-  --color-find-text-muted: rgb(180, 180, 180);
+  /* Cardinale Pastura brand tokens */
+  --color-cp-navy: #1C314D;
+  --color-cp-steel: #7AB0C4;
+  --color-cp-dark: #191919;
+  --color-cp-gray-mid: #666666;
+  --color-cp-gray-light: #B2B2B2;
+  --color-cp-white: #FFFFFF;
 }
 
 :root {
-  /* FIND Real Estate palette — black & white with charcoal */
+  /* Cardinale Pastura palette */
   --background: oklch(1 0 0);           /* #FFFFFF */
-  --foreground: oklch(0.114 0.005 17);  /* #151717 */
+  --foreground: oklch(0.12 0.005 250);  /* #191919 — gris oscuro CP */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.114 0.005 17);
+  --card-foreground: oklch(0.12 0.005 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.114 0.005 17);
-  --primary: oklch(0.114 0.005 17);     /* #151717 — charcoal black */
+  --popover-foreground: oklch(0.12 0.005 250);
+  --primary: oklch(0.26 0.048 240);     /* #1C314D — azul marino CP */
   --primary-foreground: oklch(1 0 0);   /* white */
-  --secondary: oklch(0.945 0 0);        /* #F1F1F1 — light gray */
-  --secondary-foreground: oklch(0.114 0.005 17);
-  --muted: oklch(0.945 0 0);            /* #F1F1F1 */
-  --muted-foreground: oklch(0.556 0 0); /* mid gray */
-  --accent: oklch(0.945 0 0);
-  --accent-foreground: oklch(0.114 0.005 17);
+  --secondary: oklch(0.945 0 0);        /* gris claro */
+  --secondary-foreground: oklch(0.12 0.005 250);
+  --muted: oklch(0.945 0 0);
+  --muted-foreground: oklch(0.44 0 0);  /* #666666 — gris medio CP */
+  --accent: oklch(0.68 0.06 220);       /* #7AB0C4 — azul acero CP */
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.85 0 0);
   --input: oklch(0.85 0 0);

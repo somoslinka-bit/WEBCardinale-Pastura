@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 
-export function WhyFindSection() {
+export function NosotrosSection() {
   const revealRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function WhyFindSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.style.color = '#151717';
+          el.style.color = '#191919';
           observer.disconnect();
         }
       },
@@ -25,38 +25,37 @@ export function WhyFindSection() {
   }, []);
 
   return (
-    <section className="bg-white px-[75px] py-[120px]">
+    <section id="nosotros" className="bg-white px-4 py-16 md:px-[75px] md:py-[120px]">
       {/* Texto editorial principal */}
-      <div className="grid grid-cols-[200px_1fr] gap-20 mb-20">
+      <div className="flex flex-col gap-4 mb-12 md:grid md:grid-cols-[200px_1fr] md:gap-20 md:mb-20">
         {/* Etiqueta lateral */}
-        <span className="text-[13px] font-medium text-[#888] pt-2">Why FIND</span>
+        <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest">Nosotros</span>
 
         {/* Bloque de texto grande */}
         <div>
-          <p className="text-[clamp(32px,4vw,52px)] font-bold leading-[1.15]">
-            <span className="text-[#151717]">
-              Your life&#39;s changing. Don&#39;t just find a place — find what&#39;s next.
+          <p className="text-[clamp(28px,4vw,52px)] font-bold leading-[1.15]">
+            <span className="text-[#191919]">
+              Cuando ponés tu apellido, el compromiso es otro.
             </span>{' '}
             <span
               ref={revealRef}
               className="transition-colors duration-700"
-              style={{ color: '#c0c0c0' }}
+              style={{ color: '#B2B2B2' }}
             >
-              We help you move forward with clarity, confidence, and the right agent by your side.
+              Porque todo lo que hacemos, habla de nosotros.
             </span>
           </p>
         </div>
       </div>
 
-      {/* Imagen a ancho completo */}
-      <div className="relative w-full overflow-hidden" style={{ height: '500px' }}>
-        <Image
-          src="/images/why-find-1.jpg"
-          alt="FIND Real Estate"
-          fill
-          className="object-cover"
-        />
-      </div>
+      {/* Imagen a ancho completo — sin recorte, proporción natural */}
+      <Image
+        src="/images/institucional-1.jpg"
+        alt="Cardinale Pastura — equipo"
+        width={2400}
+        height={1600}
+        className="w-full h-auto"
+      />
     </section>
   );
 }

@@ -1,30 +1,22 @@
+import { Preloader } from "@/components/Preloader";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { WhyFindSection } from "@/components/WhyFindSection";
-import { ArrowsSection } from "@/components/ArrowsSection";
-import { StepsSection } from "@/components/StepsSection";
-import { AgentsEquitySection } from "@/components/AgentsEquitySection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { FeaturesSection } from "@/components/FeaturesSection";
-import { LatestPostsSection } from "@/components/LatestPostsSection";
-import { OutroSection } from "@/components/OutroSection";
+import { NosotrosSection } from "@/components/WhyFindSection";
+import { FilosofiaSection } from "@/components/StepsSection";
+import { ProyectosSection } from "@/components/ServicesSection";
+import { ContactoSection } from "@/components/OutroSection";
 
 export default function Home() {
   return (
     <>
+      <Preloader />
       <Navbar />
       <main>
         <HeroSection />
-        <WhyFindSection />
-        <ArrowsSection />
-        <StepsSection />
-        <AgentsEquitySection />
-        <TestimonialsSection />
-        <ServicesSection />
-        <FeaturesSection />
-        <LatestPostsSection />
-        <OutroSection />
+        <NosotrosSection />
+        <FilosofiaSection />
+        <ProyectosSection />
+        <ContactoSection />
       </main>
     </>
   );

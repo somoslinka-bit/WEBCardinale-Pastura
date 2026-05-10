@@ -1,84 +1,119 @@
-import { ArrowRightIcon, ArrowRightServicesIcon } from '@/components/icons';
+'use client';
 
-// Datos de los servicios
-const services = [
-  {
-    id: 1,
-    number: '01',
-    description:
-      "Buy smarter with expert agents backed by mortgage, legal, and appraisal pros—dialed in to get you the best deal, fast. We've done this over 10,000 times, and we know what wins.",
-    word: 'Buy',
-  },
-  {
-    id: 2,
-    number: '02',
-    description:
-      'Sell fast, sell high. Your listing gets pro staging, strategic pricing, constant open houses, and agents who never stop working until the right buyer signs.',
-    word: 'Sell',
-  },
-  {
-    id: 3,
-    number: '03',
-    description:
-      'Access hidden rentals before they hit the market through agents who know every landlord in town. With decades of NYC experience, we unlock the best deals you won\'t find online.',
-    word: 'Rent',
-  },
-];
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
-export function ServicesSection() {
+function useReveal(threshold = 0.12) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, visible };
+}
+
+const revealStyle = (visible: boolean, delay = 0): React.CSSProperties => ({
+  opacity: visible ? 1 : 0,
+  transform: visible ? 'translateY(0)' : 'translateY(32px)',
+  transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+});
+
+interface VideoCardProps {
+  src: string;
+  label: string;
+  delay: number;
+}
+
+function VideoCard({ src, label, delay }: VideoCardProps) {
+  const { ref, visible } = useReveal(0.1);
+
   return (
-    <section className="bg-[#151717] text-white px-[75px] pt-[100px] pb-[60px]">
+    <div ref={ref} className="flex flex-col gap-3" style={revealStyle(visible, delay)}>
+      <div className="relative overflow-hidden rounded-sm group" style={{ aspectRatio: '16/9' }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+        {/* Overlay sutil en hover */}
+        <div className="absolute inset-0 bg-[#1C314D]/0 group-hover:bg-[#1C314D]/20 transition-colors duration-500" />
+      </div>
+      <span className="text-[12px] uppercase tracking-[0.18em] text-white/40">{label}</span>
+    </div>
+  );
+}
+
+export function ProyectosSection() {
+  const header = useReveal();
+  const info = useReveal();
+
+  return (
+    <section id="proyectos" className="bg-[#1C314D] text-white px-4 pt-16 pb-12 md:px-[75px] md:pt-[100px] md:pb-[80px]">
       {/* Encabezado */}
-      <div className="mb-12">
-        <span className="text-[13px] font-medium text-white/50 uppercase tracking-wider block mb-6">
-          Services
+      <div ref={header.ref} className="mb-12 md:mb-16" style={revealStyle(header.visible)}>
+        <span className="text-[13px] font-medium text-white/40 uppercase tracking-wider block">
+          Nuestros desarrollos
         </span>
-        <h2 className="text-[72px] font-bold leading-[1] text-white">
-          How{' '}
-          <span className="text-white/30">FIND</span>
-          {' '}Can Help You
-        </h2>
       </div>
 
-      {/* Filas de servicios */}
-      {services.map((service, index) => (
-        <div
-          key={service.id}
-          className={`border-t border-white/20 grid grid-cols-[56px_1fr_1fr_56px] gap-10 items-center py-12${index === services.length - 1 ? ' border-b' : ''}`}
-        >
-          {/* Círculo con número */}
-          <div className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-[12px] text-white/50">
-            {service.number}
-          </div>
+      {/* Proyecto Sierra Viva */}
+      <div className="border-t border-white/15 pt-10 md:pt-16">
 
-          {/* Descripción */}
-          <p className="text-[15px] leading-[1.6] text-white max-w-[400px]">
-            {service.description}
-          </p>
-
-          {/* Palabra grande */}
-          <div className="text-[clamp(60px,8vw,130px)] font-bold leading-none text-white text-center">
-            {service.word}
+        {/* Info del proyecto */}
+        <div ref={info.ref} className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10 md:mb-14" style={revealStyle(info.visible, 80)}>
+          <div>
+            <Image
+              src="/images/sierra-viva-logo-blanco.png"
+              alt="Sierra Viva"
+              width={400}
+              height={120}
+              className="h-[60px] md:h-[80px] w-auto mb-6"
+            />
+            <p className="text-[15px] md:text-[16px] leading-[1.75] text-white/70 max-w-[520px]">
+              Un desarrollo pensado desde la naturaleza. Sierra Viva combina arquitectura contemporánea con el entorno serrano de Tandil, creando espacios que invitan a vivir de otra manera.
+            </p>
           </div>
-
-          {/* Flecha */}
-          <div className="flex justify-end">
-            <ArrowRightServicesIcon className="text-white/40 w-8 h-8" />
-          </div>
+          <a
+            href="https://wa.me/5491130331724?text=Hola%2C%20quiero%20información%20sobre%20Sierra%20Viva"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center rounded-[100px] border border-white/40 px-7 py-3 text-[14px] font-medium text-white transition-all hover:bg-white/10"
+          >
+            Consultar disponibilidad
+          </a>
         </div>
-      ))}
 
-      {/* CTA inferior */}
-      <div className="border-t border-white/20 pt-16 pb-4">
-        <p className="text-[32px] font-semibold leading-[1.3] text-white max-w-[680px] mb-8">
-          Our certified agents guide you through every stage of real estate with expert knowledge and reliable support.
-        </p>
-        <a
-          href="/search"
-          className="btn-pill btn-pill-outline-white inline-flex items-center gap-2"
-        >
-          Get Started with FIND <ArrowRightIcon />
-        </a>
+        {/* Videos lado a lado */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <VideoCard
+            src="/videos/sierra-viva-promo.mp4"
+            label="Sierra Viva — Vista general"
+            delay={200}
+          />
+          <VideoCard
+            src="/videos/sierra-viva-terraza.mp4"
+            label="Sierra Viva — Terraza fogonero"
+            delay={380}
+          />
+        </div>
       </div>
     </section>
   );

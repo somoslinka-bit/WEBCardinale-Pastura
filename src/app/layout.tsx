@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Lora } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "FIND Real Estate | Purchase, Rent or Sell Commercial and Residential Real Estate",
-  description: "Expert agents. Real guidance. A clear path to find what's next.",
+  title: "Cardinale Pastura — Desarrollos Inmobiliarios en Tandil",
+  description: "Diseño, naturaleza y compromiso. Conocé Sierra Viva, nuestro nuevo desarrollo en Tandil.",
 };
 
 export default function RootLayout({
@@ -26,8 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${instrumentSans.variable} ${lora.variable} antialiased`}
+      lang="es"
+      className={`${nunitoSans.variable} antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

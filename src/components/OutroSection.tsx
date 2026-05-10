@@ -1,129 +1,115 @@
-import { ArrowRightIcon, FindLogo } from '@/components/icons';
+import Image from 'next/image';
 
-const navLinks = ['Search', 'Agents', 'Join', 'About Us', 'Agent Portal'];
-const socialLinks = ['Facebook', 'Instagram', 'Youtube', 'Linkedin'];
-const legalLinks = [
-  'Terms',
-  'Privacy policy',
-  'Fair Housing Notice',
-  'Operating Procedure',
-  'Press',
-  'Housing Choice Vouchers Welcome',
-  'Se Aceptan Vales de Elección de Vivienda',
+const navLinks = [
+  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Filosofía', href: '#filosofia' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Contacto', href: '#contacto' },
 ];
 
-export function OutroSection() {
+export function ContactoSection() {
   return (
-    <section className="bg-[#151717] text-white">
+    <section id="contacto" className="bg-[#191919] text-white">
       {/* CTA final */}
-      <div className="px-[75px] py-[80px] border-b border-white/10">
-        <h2 className="text-[56px] font-bold leading-[1.1] mb-8">
-          Find You. We&#39;ll Help You Get There.
+      <div className="px-4 py-12 md:px-[75px] md:py-[80px] border-b border-white/10">
+        <h2 className="text-[clamp(30px,5vw,56px)] font-bold leading-[1.1] mb-8 max-w-[640px]">
+          ¿Querés saber más sobre nuestros proyectos?
         </h2>
         <a
-          href="/search"
+          href="https://wa.me/5491130331724?text=Hola%2C%20quiero%20más%20información%20sobre%20Cardinale%20Pastura"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-pill btn-pill-outline-white inline-flex items-center gap-2"
         >
-          Let&#39;s Get Started <ArrowRightIcon />
+          Escribinos por WhatsApp
         </a>
       </div>
 
-      {/* Newsletter + links grid */}
-      <div className="px-[75px] py-[60px] grid grid-cols-[1fr_auto_auto_auto] gap-20 border-b border-white/10">
-        {/* Newsletter */}
+      {/* Grid de info + links */}
+      <div className="px-4 py-10 md:px-[75px] md:py-[60px] flex flex-col gap-10 md:grid md:grid-cols-[1fr_auto_auto] md:gap-20 border-b border-white/10">
+        {/* Info de contacto */}
         <div>
-          <h3 className="text-[20px] font-semibold mb-4">
-            Subscribe to our Newsletter!
-          </h3>
-          <div className="flex items-center border-b border-white/40 pb-2 max-w-[400px]">
-            <input
-              type="email"
-              placeholder="Enter address"
-              className="bg-transparent border-none outline-none text-white placeholder-white/40 text-[15px] flex-1"
-            />
-            <button className="text-white ml-2" type="button" aria-label="Suscribirse">
-              <ArrowRightIcon />
-            </button>
-          </div>
-
-          {/* Info de contacto */}
-          <div className="mt-10 grid grid-cols-3 gap-8">
+          <Image
+            src="/images/logo-cp-blanco.png"
+            alt="Cardinale Pastura"
+            width={160}
+            height={48}
+            className="h-[36px] md:h-[40px] w-auto mb-8"
+          />
+          <div className="grid grid-cols-2 gap-6 md:gap-8 max-w-[480px]">
             <div>
               <span className="text-[11px] uppercase tracking-wider text-white/50 block mb-2">
-                Head Office
+                WhatsApp
               </span>
-              <p className="text-[14px] text-white/90 leading-[1.5]">
-                5 West 37th Street, 12th Floor,
-                <br />
-                New York, NY 10018
-              </p>
+              <a
+                href="https://wa.me/5491130331724"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] text-white/90 hover:text-white transition-colors"
+              >
+                +54 9 11 3033-1724
+              </a>
             </div>
             <div>
               <span className="text-[11px] uppercase tracking-wider text-white/50 block mb-2">
-                Email Us
+                Instagram
               </span>
-              <p className="text-[14px] text-white/90">
-                hello@findrealestate.com
-              </p>
+              <a
+                href="https://instagram.com/cardinalepastura"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] text-white/90 hover:text-white transition-colors"
+              >
+                @cardinalepastura
+              </a>
             </div>
             <div>
               <span className="text-[11px] uppercase tracking-wider text-white/50 block mb-2">
-                Call Us
+                Ciudad
               </span>
-              <p className="text-[14px] text-white/90">+1 212 994 9965</p>
+              <p className="text-[14px] text-white/90">Tandil, Buenos Aires</p>
             </div>
           </div>
         </div>
 
         {/* Links de navegación */}
-        <nav className="flex flex-col gap-1">
+        <nav className="flex flex-row flex-wrap gap-x-6 gap-y-2 md:flex-col md:gap-1">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href="#"
-              className="text-[18px] font-medium text-white hover:text-white/70 transition-colors leading-[2]"
+              key={link.href}
+              href={link.href}
+              className="text-[16px] md:text-[18px] font-medium text-white hover:text-white/70 transition-colors md:leading-[2]"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Links de redes sociales */}
-        <div className="flex flex-col gap-1">
-          {socialLinks.map((s) => (
-            <a
-              key={s}
-              href="#"
-              className="text-[14px] text-white/70 hover:text-white transition-colors leading-[2.2]"
-            >
-              {s}
-            </a>
-          ))}
+        {/* Redes */}
+        <div className="flex flex-row gap-6 md:flex-col md:gap-1">
+          <a
+            href="https://instagram.com/cardinalepastura"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[14px] text-white/70 hover:text-white transition-colors md:leading-[2.2]"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://wa.me/5491130331724"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[14px] text-white/70 hover:text-white transition-colors md:leading-[2.2]"
+          >
+            WhatsApp
+          </a>
         </div>
-      </div>
-
-      {/* Wordmark FIND */}
-      <div className="px-[75px] py-[40px] border-b border-white/10">
-        <FindLogo className="w-full max-w-[860px] h-auto text-white" />
       </div>
 
       {/* Barra legal */}
-      <div className="px-[75px] py-[16px] flex flex-wrap gap-x-6 gap-y-2 items-center justify-between text-[11px] text-white/50">
-        <div className="flex flex-wrap gap-x-6 gap-y-1">
-          {legalLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="hover:text-white/80 transition-colors"
-            >
-              {link}
-            </a>
-          ))}
-        </div>
-        <div className="flex gap-6">
-          <span>FIND Real Estate</span>
-          <span>Copyright © 2026</span>
-        </div>
+      <div className="px-4 py-4 md:px-[75px] md:py-[16px] flex flex-col gap-1 md:flex-row md:items-center md:justify-between text-[11px] text-white/50">
+        <span>Cardinale Pastura — Desarrollos Inmobiliarios</span>
+        <span>© 2026 — Tandil, Argentina</span>
       </div>
     </section>
   );

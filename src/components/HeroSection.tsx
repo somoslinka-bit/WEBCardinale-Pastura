@@ -58,7 +58,7 @@ export function HeroSection() {
           href="#proyectos"
           className="mt-3 inline-flex items-center rounded-[100px] bg-white px-7 py-3 text-[14px] md:text-[15px] font-semibold text-[#1C314D] transition-opacity hover:opacity-85"
         >
-          Conocé Sierra Viva
+          Conocé nuestros Proyectos
         </a>
       </div>
 

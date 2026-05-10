@@ -102,7 +102,94 @@
   }
 }
 
-/* FIND Real Estate utility classes */
+/* Parallax section — Cardinale Pastura */
+.parallax-root {
+  background: #0d1a26;
+}
+.parallax-header {
+  position: relative;
+  height: 200vh;
+}
+.parallax-visuals {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.parallax-overflow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #1C314D;
+  z-index: 10;
+}
+.parallax-layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.parallax-layer-bg {
+  position: absolute;
+  inset: -30% 0;
+  background-size: cover;
+  background-position: center;
+}
+.parallax-layer-overlay {
+  position: absolute;
+  inset: -30% 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 49, 77, 0.3) 0%,
+    rgba(28, 49, 77, 0.55) 60%,
+    rgba(13, 26, 38, 0.85) 100%
+  );
+}
+.parallax-layer-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+.parallax-label {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #7AB0C4;
+  margin-bottom: 20px;
+}
+.parallax-title {
+  font-size: clamp(64px, 14vw, 200px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+.parallax-layer-front {
+  position: absolute;
+  inset: -30% 0;
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.35;
+  mix-blend-mode: luminosity;
+}
+.parallax-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, #ffffff);
+  pointer-events: none;
+}
+
+/* Cardinale Pastura utility classes */
 @layer utilities {
   .font-instrument {
     font-family: var(--font-sans);

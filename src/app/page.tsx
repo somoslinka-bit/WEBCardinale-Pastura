@@ -1,6 +1,7 @@
 import { Preloader } from "@/components/Preloader";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { ParallaxSection } from "@/components/ui/parallax-scrolling";
 import { NosotrosSection } from "@/components/WhyFindSection";
 import { FilosofiaSection } from "@/components/StepsSection";
 import { ProyectosSection } from "@/components/ServicesSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <ParallaxSection />
         <NosotrosSection />
         <FilosofiaSection />
         <ProyectosSection />

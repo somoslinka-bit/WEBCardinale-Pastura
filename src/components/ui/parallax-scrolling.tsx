@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
 
-export function ParallaxSection() {
+export function ParallaxHero() {
   const parallaxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,41 +55,61 @@ export function ParallaxSection() {
     <div ref={parallaxRef} className="parallax-root">
       <section className="parallax-header">
         <div className="parallax-visuals">
-          {/* Línea negra superior */}
-          <div className="parallax-overflow" />
 
           <div data-parallax-layers className="parallax-layers">
 
-            {/* Capa 1 — Fondo: render fachada */}
+            {/* Capa 1 — Fondo: video hero como imagen estática */}
             <div
               data-parallax-layer="1"
               className="parallax-layer-bg"
               style={{ backgroundImage: 'url(/images/sierra-viva-fachada.jpg)' }}
             />
 
-            {/* Capa 2 — Overlay con gradiente */}
+            {/* Capa 2 — Overlay azul marino */}
             <div
               data-parallax-layer="2"
               className="parallax-layer-overlay"
             />
 
-            {/* Capa 3 — Título */}
+            {/* Capa 3 — Logo + tagline + CTA */}
             <div data-parallax-layer="3" className="parallax-layer-title">
-              <p className="parallax-label">Cardinale Pastura</p>
-              <h2 className="parallax-title">
-                SIERRA<br />VIVA
-              </h2>
+              <Image
+                src="/images/logo-cp-blanco.png"
+                alt="Cardinale Pastura"
+                width={220}
+                height={66}
+                className="parallax-logo"
+                priority
+              />
+              <h1 className="parallax-title">
+                Dos apellidos,<br />
+                <span className="parallax-title-accent">una visión.</span>
+              </h1>
+              <p className="parallax-subtitle">
+                Diseño, naturaleza y compromiso.
+              </p>
+              <a href="#nosotros" className="parallax-cta">
+                Conocé Sierra Viva
+              </a>
             </div>
 
-            {/* Capa 4 — Primer plano: render del proyecto */}
+            {/* Capa 4 — Primer plano sutil */}
             <div
               data-parallax-layer="4"
               className="parallax-layer-front"
-              style={{ backgroundImage: 'url(/images/sierra-viva-render-1.jpg)' }}
+              style={{ backgroundImage: 'url(/images/sierra-viva-fachada.jpg)' }}
             />
           </div>
 
-          {/* Fade inferior */}
+          {/* Indicador de scroll */}
+          <div className="parallax-scroll-indicator">
+            <span>Scroll</span>
+            <div className="parallax-scroll-line">
+              <div className="parallax-scroll-dot" />
+            </div>
+          </div>
+
+          {/* Fade inferior hacia blanco */}
           <div className="parallax-fade" />
         </div>
       </section>

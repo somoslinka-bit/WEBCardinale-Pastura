@@ -66,7 +66,7 @@ export function ProyectosSection() {
   const info = useReveal();
 
   return (
-    <section id="proyectos" className="bg-[#1C314D] text-white px-4 pt-16 pb-12 md:px-[75px] md:pt-[100px] md:pb-[80px]">
+    <section id="proyectos" className="relative bg-[#1C314D] text-white px-4 pt-16 pb-12 md:px-[75px] md:pt-[100px] md:pb-[80px] overflow-hidden">
       {/* Encabezado */}
       <div ref={header.ref} className="mb-12 md:mb-16" style={revealStyle(header.visible)}>
         <span className="text-[13px] font-medium text-white/40 uppercase tracking-wider block">
@@ -115,6 +115,12 @@ export function ProyectosSection() {
           />
         </div>
       </div>
+
+      {/* Transición suave hacia Contacto (#191919) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, transparent, #191919)' }}
+      />
     </section>
   );
 }

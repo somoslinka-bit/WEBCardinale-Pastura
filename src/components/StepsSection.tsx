@@ -24,7 +24,7 @@ const pilares: Pilar[] = [
 
 export function FilosofiaSection() {
   return (
-    <section id="filosofia" className="bg-white px-4 py-16 md:px-[75px] md:py-[100px]">
+    <section id="filosofia" className="relative bg-white px-4 py-16 md:px-[75px] md:py-[100px] overflow-hidden">
       <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-[80px] md:items-start">
         {/* Columna izquierda: título */}
         <div>
@@ -60,6 +60,12 @@ export function FilosofiaSection() {
           </div>
         </div>
       </div>
+
+      {/* Transición suave hacia Proyectos (navy) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, transparent, #1C314D)' }}
+      />
     </section>
   );
 }

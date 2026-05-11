@@ -17,7 +17,6 @@ export function NosotrosSection() {
       );
       obs.observe(el);
     }
-
     const section = sectionRef.current;
     if (section) {
       const obs = new IntersectionObserver(
@@ -33,17 +32,11 @@ export function NosotrosSection() {
     <section
       id="nosotros"
       className="relative bg-white px-4 py-16 md:px-[75px] md:py-[120px] overflow-hidden z-10"
-      style={{
-        marginTop: '-52px',
-        borderRadius: '28px 28px 0 0',
-        boxShadow: '0 -8px 40px rgba(0,0,0,0.18)',
-      }}
+      style={{ marginTop: '-52px', borderRadius: '28px 28px 0 0', boxShadow: '0 -8px 40px rgba(0,0,0,0.18)' }}
     >
-      <div
-        ref={sectionRef}
-        className="flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-16 md:items-center"
-      >
-        {/* Texto */}
+      <div ref={sectionRef} className="flex flex-col items-center text-center gap-10">
+
+        {/* Label + título centrados */}
         <div
           style={{
             opacity: visible ? 1 : 0,
@@ -51,10 +44,10 @@ export function NosotrosSection() {
             transition: 'opacity 0.9s ease, transform 0.9s ease',
           }}
         >
-          <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest block mb-8">
+          <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest block mb-6">
             Nosotros
           </span>
-          <p className="text-[clamp(26px,3.8vw,50px)] font-bold leading-[1.18]">
+          <p className="text-[clamp(26px,3.8vw,50px)] font-bold leading-[1.18] max-w-[820px]">
             <span className="text-[#191919]">
               Cuando ponés tu apellido, el compromiso es otro.
             </span>{' '}
@@ -68,8 +61,9 @@ export function NosotrosSection() {
           </p>
         </div>
 
-        {/* Imagen */}
+        {/* Imagen debajo, ancho completo */}
         <div
+          className="w-full"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(36px)',

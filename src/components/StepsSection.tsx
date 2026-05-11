@@ -49,54 +49,62 @@ const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
 });
 
 export function FilosofiaSection() {
-  const left = useReveal();
-  const right = useReveal();
+  const header = useReveal();
+  const pillars = useReveal();
 
   return (
     <section id="filosofia" className="relative bg-white px-4 py-16 md:px-[75px] md:py-[100px] overflow-hidden">
-      <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-[80px] md:items-start">
 
-        {/* Columna izquierda: título */}
-        <div ref={left.ref} style={fadeUp(left.visible)}>
-          <h2 className="text-[clamp(40px,5.5vw,80px)] font-bold leading-[1]">
-            Nuestra
-            <br />
-            <span className="text-[#B2B2B2]">Filosofía.</span>
-          </h2>
-          <a
-            href="https://wa.me/5491130331724"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-pill inline-flex items-center gap-2 mt-10 text-white"
-            style={{ backgroundColor: '#1C314D', borderRadius: '100px', padding: '11.55px 22.5px', fontSize: '13.5px', fontWeight: 500 }}
-          >
-            Hablemos
-          </a>
-        </div>
+      {/* Título centrado */}
+      <div ref={header.ref} className="flex flex-col items-center text-center mb-16 md:mb-20">
+        <h2
+          className="text-[clamp(40px,5.5vw,80px)] font-bold leading-[1]"
+          style={fadeUp(header.visible)}
+        >
+          Nuestra
+          <br />
+          <span className="text-[#B2B2B2]">Filosofía.</span>
+        </h2>
+        <a
+          href="https://wa.me/5491130331724"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-pill inline-flex items-center gap-2 mt-10 text-white"
+          style={{
+            ...fadeUp(header.visible, 120),
+            backgroundColor: '#1C314D',
+            borderRadius: '100px',
+            padding: '11.55px 22.5px',
+            fontSize: '13.5px',
+            fontWeight: 500,
+          }}
+        >
+          Hablemos
+        </a>
+      </div>
 
-        {/* Columna derecha: pilares */}
-        <div ref={right.ref}>
-          <span
-            className="text-[13px] text-[#7AB0C4] uppercase tracking-widest block mb-6"
-            style={fadeUp(right.visible, 80)}
-          >
-            Pilares:
-          </span>
-          <div className="flex flex-col divide-y divide-black/10">
-            {pilares.map((pilar, i) => (
-              <div
-                key={pilar.n}
-                className="flex gap-5 items-start py-6 md:py-8 first:pt-0"
-                style={fadeUp(right.visible, 160 + i * 120)}
-              >
-                <span className="text-[12px] text-[#B2B2B2] mt-1 min-w-[24px]">{pilar.n}</span>
-                <p className="text-[15px] md:text-[16px] leading-[1.6]">
-                  <strong className="font-bold text-[#191919]">{pilar.bold}</strong>
-                  <span className="text-[#555]">{pilar.rest}</span>
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Pilares */}
+      <div ref={pillars.ref} className="max-w-[720px] mx-auto">
+        <span
+          className="text-[13px] text-[#7AB0C4] uppercase tracking-widest block mb-6 text-center"
+          style={fadeUp(pillars.visible, 80)}
+        >
+          Pilares:
+        </span>
+        <div className="flex flex-col divide-y divide-black/10">
+          {pilares.map((pilar, i) => (
+            <div
+              key={pilar.n}
+              className="flex gap-5 items-start py-6 md:py-8 first:pt-0"
+              style={fadeUp(pillars.visible, 160 + i * 120)}
+            >
+              <span className="text-[12px] text-[#B2B2B2] mt-1 min-w-[24px]">{pilar.n}</span>
+              <p className="text-[15px] md:text-[16px] leading-[1.6]">
+                <strong className="font-bold text-[#191919]">{pilar.bold}</strong>
+                <span className="text-[#555]">{pilar.rest}</span>
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 

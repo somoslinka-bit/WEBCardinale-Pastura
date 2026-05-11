@@ -67,11 +67,8 @@ export function ProyectosSection() {
 
   return (
     <section id="proyectos" className="relative bg-[#1C314D] text-white px-4 pt-16 pb-12 md:px-[75px] md:pt-[100px] md:pb-[80px] overflow-hidden">
-      {/* Encabezado */}
-      <div ref={header.ref} className="mb-12 md:mb-20" style={revealStyle(header.visible)}>
-        <span className="text-[12px] font-medium text-white/40 uppercase tracking-widest block mb-4">
-          Nuestros desarrollos
-        </span>
+      {/* Encabezado centrado */}
+      <div ref={header.ref} className="text-center mb-12 md:mb-20" style={revealStyle(header.visible)}>
         <h2 className="text-[clamp(42px,6.5vw,96px)] font-bold leading-[1] tracking-tight text-white">
           Proyectos.
         </h2>
@@ -81,24 +78,22 @@ export function ProyectosSection() {
       <div className="border-t border-white/15 pt-10 md:pt-16">
 
         {/* Info del proyecto */}
-        <div ref={info.ref} className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10 md:mb-14" style={revealStyle(info.visible, 80)}>
-          <div>
-            <Image
-              src="/images/sierra-viva-logo-blanco.png"
-              alt="Sierra Viva"
-              width={600}
-              height={180}
-              className="h-[80px] md:h-[110px] w-auto mb-6"
-            />
-            <p className="text-[15px] md:text-[16px] leading-[1.75] text-white/70 max-w-[520px]">
-              Un desarrollo pensado desde la naturaleza. Sierra Viva combina arquitectura contemporánea con el entorno serrano de Tandil, creando espacios que invitan a vivir de otra manera.
-            </p>
-          </div>
+        <div ref={info.ref} className="flex flex-col items-center text-center gap-6 mb-10 md:mb-14" style={revealStyle(info.visible, 80)}>
+          <Image
+            src="/images/sierra-viva-logo-blanco.png"
+            alt="Sierra Viva"
+            width={600}
+            height={180}
+            className="h-[80px] md:h-[110px] w-auto"
+          />
+          <p className="text-[15px] md:text-[16px] leading-[1.75] text-white/70 max-w-[520px]">
+            Un desarrollo pensado desde la naturaleza. Sierra Viva combina arquitectura contemporánea con el entorno serrano de Tandil, creando espacios que invitan a vivir de otra manera.
+          </p>
           <a
             href="https://wa.me/5491130331724?text=Hola%2C%20quiero%20información%20sobre%20Sierra%20Viva"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center rounded-[100px] border border-white/40 px-7 py-3 text-[14px] font-medium text-white transition-all hover:bg-white/10"
+            className="inline-flex items-center rounded-[100px] border border-white/40 px-7 py-3 text-[14px] font-medium text-white transition-all hover:bg-white/10"
           >
             Consultar disponibilidad
           </a>

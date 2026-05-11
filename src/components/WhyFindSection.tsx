@@ -30,7 +30,15 @@ export function NosotrosSection() {
   }, []);
 
   return (
-    <section id="nosotros" className="relative bg-white px-4 py-16 md:px-[75px] md:py-[120px] overflow-hidden">
+    <section
+      id="nosotros"
+      className="relative bg-white px-4 py-16 md:px-[75px] md:py-[120px] overflow-hidden z-10"
+      style={{
+        marginTop: '-52px',
+        borderRadius: '28px 28px 0 0',
+        boxShadow: '0 -8px 40px rgba(0,0,0,0.18)',
+      }}
+    >
       <div
         ref={sectionRef}
         className="flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-16 md:items-center"

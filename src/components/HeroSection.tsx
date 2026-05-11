@@ -76,6 +76,19 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* Curva de transición hacia Nosotros */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
+        <svg
+          viewBox="0 0 1440 72"
+          preserveAspectRatio="none"
+          className="w-full block"
+          style={{ height: '72px' }}
+          aria-hidden="true"
+        >
+          <path d="M0,0 C480,72 960,72 1440,0 L1440,72 L0,72 Z" fill="#ffffff" />
+        </svg>
+      </div>
+
       <style>{`
         @keyframes scrollIndicator {
           0% { transform: translateY(-100%); }

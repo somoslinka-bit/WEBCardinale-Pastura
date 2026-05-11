@@ -1,3 +1,7 @@
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
+
 interface Pilar {
   n: string;
   bold: string;
@@ -22,12 +26,38 @@ const pilares: Pilar[] = [
   },
 ];
 
+function useReveal(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
+  opacity: visible ? 1 : 0,
+  transform: visible ? 'translateY(0)' : 'translateY(28px)',
+  transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+});
+
 export function FilosofiaSection() {
+  const left = useReveal();
+  const right = useReveal();
+
   return (
     <section id="filosofia" className="relative bg-white px-4 py-16 md:px-[75px] md:py-[100px] overflow-hidden">
       <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-[80px] md:items-start">
+
         {/* Columna izquierda: título */}
-        <div>
+        <div ref={left.ref} style={fadeUp(left.visible)}>
           <h2 className="text-[clamp(40px,5.5vw,80px)] font-bold leading-[1]">
             Nuestra
             <br />
@@ -45,11 +75,20 @@ export function FilosofiaSection() {
         </div>
 
         {/* Columna derecha: pilares */}
-        <div>
-          <span className="text-[13px] text-[#7AB0C4] uppercase tracking-widest block mb-6">Pilares:</span>
+        <div ref={right.ref}>
+          <span
+            className="text-[13px] text-[#7AB0C4] uppercase tracking-widest block mb-6"
+            style={fadeUp(right.visible, 80)}
+          >
+            Pilares:
+          </span>
           <div className="flex flex-col divide-y divide-black/10">
-            {pilares.map((pilar) => (
-              <div key={pilar.n} className="flex gap-5 items-start py-6 md:py-8 first:pt-0">
+            {pilares.map((pilar, i) => (
+              <div
+                key={pilar.n}
+                className="flex gap-5 items-start py-6 md:py-8 first:pt-0"
+                style={fadeUp(right.visible, 160 + i * 120)}
+              >
                 <span className="text-[12px] text-[#B2B2B2] mt-1 min-w-[24px]">{pilar.n}</span>
                 <p className="text-[15px] md:text-[16px] leading-[1.6]">
                   <strong className="font-bold text-[#191919]">{pilar.bold}</strong>

@@ -11,7 +11,7 @@ export function ContactoSection() {
   return (
     <section id="contacto" className="bg-[#191919] text-white">
       {/* CTA final */}
-      <div className="px-4 py-12 md:px-[75px] md:py-[80px] border-b border-white/10">
+      <div className="px-4 py-12 md:px-[75px] md:py-[80px] border-b border-white/10 flex flex-col items-center text-center">
         <h2 className="text-[clamp(30px,5vw,56px)] font-bold leading-[1.1] mb-8 max-w-[640px]">
           ¿Querés saber más sobre nuestros proyectos?
         </h2>

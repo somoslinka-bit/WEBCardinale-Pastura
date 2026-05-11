@@ -45,7 +45,7 @@ function useReveal(threshold = 0.1) {
 const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
   opacity: visible ? 1 : 0,
   transform: visible ? 'translateY(0)' : 'translateY(28px)',
-  transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+  transition: `opacity 0.8s ease-out ${delay}ms, transform 0.8s ease-out ${delay}ms`,
 });
 
 export function FilosofiaSection() {

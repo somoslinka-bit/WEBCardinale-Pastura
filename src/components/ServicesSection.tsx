@@ -29,7 +29,7 @@ function useReveal(threshold = 0.12) {
 const revealStyle = (visible: boolean, delay = 0): React.CSSProperties => ({
   opacity: visible ? 1 : 0,
   transform: visible ? 'translateY(0)' : 'translateY(32px)',
-  transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+  transition: `opacity 0.8s ease-out ${delay}ms, transform 0.8s ease-out ${delay}ms`,
 });
 
 interface VideoCardProps {
@@ -56,7 +56,7 @@ function VideoCard({ src, label, delay }: VideoCardProps) {
         {/* Overlay sutil en hover */}
         <div className="absolute inset-0 bg-[#1C314D]/0 group-hover:bg-[#1C314D]/20 transition-colors duration-500" />
       </div>
-      <span className="text-[12px] uppercase tracking-[0.18em] text-white/40">{label}</span>
+      <span className="text-[12px] uppercase tracking-[0.18em] text-white/60">{label}</span>
     </div>
   );
 }
@@ -103,12 +103,12 @@ export function ProyectosSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <VideoCard
             src="/videos/sierra-viva-promo.mp4"
-            label="Sierra Viva — Vista general"
+            label="Vista general"
             delay={200}
           />
           <VideoCard
             src="/videos/sierra-viva-terraza.mp4"
-            label="Sierra Viva — Terraza fogonero"
+            label="Terraza fogonero"
             delay={380}
           />
         </div>

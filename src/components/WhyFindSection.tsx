@@ -41,7 +41,7 @@ export function NosotrosSection() {
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(36px)',
-            transition: 'opacity 0.9s ease, transform 0.9s ease',
+            transition: 'opacity 0.9s ease-out, transform 0.9s ease-out',
           }}
         >
           <span className="text-[13px] font-medium text-[#7AB0C4] uppercase tracking-widest block mb-6">
@@ -67,7 +67,7 @@ export function NosotrosSection() {
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(36px)',
-            transition: 'opacity 0.9s ease 0.18s, transform 0.9s ease 0.18s',
+            transition: 'opacity 0.9s ease-out 0.18s, transform 0.9s ease-out 0.18s',
           }}
         >
           <Image

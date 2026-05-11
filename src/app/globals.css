@@ -7,8 +7,9 @@
 @theme inline {
   /* Fonts */
   --font-sans: var(--font-nunito-sans), "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-mono: ui-monospace, monospace;
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-serif);
 
   /* FIND Real Estate color tokens */
   --color-background: var(--background);
@@ -95,10 +96,33 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.6;
   }
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    line-height: 1.1;
+  }
+  a {
+    cursor: pointer;
+  }
+  button {
+    cursor: pointer;
+  }
+  /* Accesibilidad: respeta preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 

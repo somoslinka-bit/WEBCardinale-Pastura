@@ -67,7 +67,7 @@ export function Navbar() {
           {/* Hamburguesa — solo mobile */}
           <button
             type="button"
-            className="text-[#191919] md:hidden p-1"
+            className="text-[#191919] md:hidden p-[10px] -mr-[10px] cursor-pointer"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             onClick={() => setMenuOpen((v) => !v)}
           >

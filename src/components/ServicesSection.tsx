@@ -68,10 +68,13 @@ export function ProyectosSection() {
   return (
     <section id="proyectos" className="relative bg-[#1C314D] text-white px-4 pt-16 pb-12 md:px-[75px] md:pt-[100px] md:pb-[80px] overflow-hidden">
       {/* Encabezado */}
-      <div ref={header.ref} className="mb-12 md:mb-16" style={revealStyle(header.visible)}>
-        <span className="text-[13px] font-medium text-white/40 uppercase tracking-wider block">
+      <div ref={header.ref} className="mb-12 md:mb-20" style={revealStyle(header.visible)}>
+        <span className="text-[12px] font-medium text-white/40 uppercase tracking-widest block mb-4">
           Nuestros desarrollos
         </span>
+        <h2 className="text-[clamp(42px,6.5vw,96px)] font-bold leading-[1] tracking-tight text-white">
+          Proyectos.
+        </h2>
       </div>
 
       {/* Proyecto Sierra Viva */}
@@ -83,9 +86,9 @@ export function ProyectosSection() {
             <Image
               src="/images/sierra-viva-logo-blanco.png"
               alt="Sierra Viva"
-              width={400}
-              height={120}
-              className="h-[60px] md:h-[80px] w-auto mb-6"
+              width={600}
+              height={180}
+              className="h-[80px] md:h-[110px] w-auto mb-6"
             />
             <p className="text-[15px] md:text-[16px] leading-[1.75] text-white/70 max-w-[520px]">
               Un desarrollo pensado desde la naturaleza. Sierra Viva combina arquitectura contemporánea con el entorno serrano de Tandil, creando espacios que invitan a vivir de otra manera.
